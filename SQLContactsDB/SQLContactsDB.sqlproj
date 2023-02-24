@@ -69,4 +69,7 @@
   <ItemGroup>
     <None Include="SQLContactsDB.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="SQLContactsDB.refactorlog" />
+  </ItemGroup>
 </Project>
