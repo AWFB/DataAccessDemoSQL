@@ -6,7 +6,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        SqlCrud sql = new SqlCrud(GetConnectionString());
+        SqliteCrud sql = new SqliteCrud(GetConnectionString());
 
         //ReadAllContacts(sql);
 
@@ -21,12 +21,12 @@ internal class Program
         Console.WriteLine("Finished!");
     }
 
-    private static void RemovePhoneNumberFromContact(SqlCrud sql, int contactId, int phoneNumberId)
+    private static void RemovePhoneNumberFromContact(SqliteCrud sql, int contactId, int phoneNumberId)
     {
         sql.RemovePhoneNumberFromContact(contactId, phoneNumberId);
     }
 
-    private static void UpdateContact(SqlCrud sql)
+    private static void UpdateContact(SqliteCrud sql)
     {
         BasicContactModel contact = new BasicContactModel
         {
@@ -38,7 +38,7 @@ internal class Program
         sql.UpdateContactName(contact);
     }
 
-    private static void CreateNewContact(SqlCrud sql)
+    private static void CreateNewContact(SqliteCrud sql)
     {
         FullContactModel user = new FullContactModel
         {
@@ -58,7 +58,7 @@ internal class Program
         sql.CreateContact(user);
     }
 
-    private static void ReadAllContacts(SqlCrud sql)
+    private static void ReadAllContacts(SqliteCrud sql)
     {
         var rows = sql.GetAllContacts();
         foreach (var row in rows)
@@ -67,7 +67,7 @@ internal class Program
         }
     }
 
-    private static void ReadContact(SqlCrud sql, int contactId)
+    private static void ReadContact(SqliteCrud sql, int contactId)
     {
         var contact = sql.GetFullContactById(contactId);
         Console.WriteLine($"{contact.BasicInfo.Id}: {contact.BasicInfo.FirstName} {contact.BasicInfo.LastName}");
